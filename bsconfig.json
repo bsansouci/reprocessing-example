@@ -1,0 +1,10 @@
+{
+  "name": "reprocessing-example",
+  "sources": "src",
+  "bs-dependencies": ["reprocessing"],
+  "entries": [{
+    "backend": "bytecode",
+    "main-module": "Index"
+  }],
+  "refmt": 3,
+}

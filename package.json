@@ -1,0 +1,9 @@
+{
+  "name": "reprocessing-example",
+  "dependencies": {
+    "reprocessing": "schmavery/reprocessing"
+  },
+  "devDependencies": {
+    "bs-platform": "bsansouci/bsb-native"
+  }
+}
