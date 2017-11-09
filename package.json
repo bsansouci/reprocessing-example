@@ -1,5 +1,12 @@
 {
   "name": "reprocessing-example",
+  "scripts": {
+    "start": "./lib/bs/bytecode/index.byte",
+    "build": "bsb -make-world",
+    "build:web": "bsb -make-world -backend js",
+    "build:native": "bsb -make-world -backend native",
+    "clean": "bsb -clean-world"
+  },
   "dependencies": {
     "reprocessing": "schmavery/reprocessing"
   },
