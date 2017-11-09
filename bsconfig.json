@@ -4,6 +4,9 @@
   "bs-dependencies": ["reprocessing"],
   "entries": [{
     "backend": "bytecode",
+    "main-module": "Indexhot"
+  },{
+    "backend": "js",
     "main-module": "Index"
   }],
   "refmt": 3,
