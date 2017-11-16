@@ -1,11 +1,16 @@
 Reprocessing example project
 ---
 
+<p align="center"> 
+<img src="https://user-images.githubusercontent.com/4534692/32880874-172ea62e-ca64-11e7-9c12-c86df0019049.gif" />
+</p>
+
 This is a starter example project. Just clone to get started!
 
 ## How to
 ```
 git clone https://github.com/bsansouci/reprocessing-example.git
+git checkout 2048
 ```
 
 ### Install
