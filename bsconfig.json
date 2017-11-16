@@ -8,6 +8,9 @@
   },{
     "backend": "js",
     "main-module": "Index"
+  },{
+    "backend": "native",
+    "main-module": "Index"
   }],
   "refmt": 3,
 }

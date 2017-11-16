@@ -1,6 +1,8 @@
 open Reprocessing;
 
-let speed = 100.;
+let jumpForce = (-11.);
+
+let speed = 175.;
 
 let pipeWidth = 50.;
 
@@ -8,7 +10,7 @@ let halfGap = 70.;
 
 let birdSize = 20.;
 
-let gravity = 400.;
+let gravity = 40.;
 
 let birdX = 50.;
 
@@ -69,7 +71,7 @@ let drawBird = (state, env) => {
   Draw.pushMatrix(env);
   Draw.translate(~x=birdX, ~y=state.birdY -. 2., env);
   let low1 = (-200.);
-  Draw.rotate(Utils.remapf(~value=state.birdVY, ~low1, ~high1=400., ~low2=(-1.), ~high2=1.), env);
+  Draw.rotate(Utils.remapf(~value=state.birdVY, ~low1, ~high1=1200., ~low2=(-1.), ~high2=1.), env);
   Draw.translate(~x=birdSize *. (-1.), ~y=birdSize *. (-1.), env);
   switch (int_of_float(state.xOffset /. 20.) mod 3) {
   | 0 =>
@@ -229,7 +231,7 @@ let draw = ({font, score, image, birdY, birdVY, pipes, xOffset, running} as stat
       ...state,
       pipes,
       birdY: max(min(birdY +. birdVY *. deltaTime, floorY -. birdSize), birdSize),
-      birdVY: Env.keyPressed(Space, env) || collided ? (-200.) : birdVY +. gravity *. deltaTime,
+      birdVY: Env.keyPressed(Space, env) || collided ? jumpForce : birdVY +. gravity *. deltaTime,
       xOffset: xOffset +. speed *. deltaTime,
       running: collided || hitFloor ? Dead : Running,
       score:
