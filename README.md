@@ -6,6 +6,7 @@ This is a starter example project. Just clone to get started!
 ## How to
 ```
 git clone https://github.com/bsansouci/reprocessing-example.git
+git checkout livestream-flappybird
 ```
 
 ### Install
