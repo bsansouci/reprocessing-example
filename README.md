@@ -16,7 +16,7 @@ git checkout 2048
 ### Install
 _warning_: this doesn't work with npm5 yet. Use npm4 or use yarn. To downgrade to npm4 you can `npm install -g npm@latest-4`
 ```
-yarn
+npm install
 ```
 
 ### Build
