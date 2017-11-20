@@ -1,4 +1,4 @@
-Reprocessing example project
+Reprocessing example project - 2048 Game
 ---
 
 <p align="center"> 
@@ -6,6 +6,8 @@ Reprocessing example project
 </p>
 
 This is a starter example project. Just clone to get started!
+
+This was written as part of a livestream viewable here: https://www.youtube.com/watch?v=UDOEd5jS0Ac
 
 ## How to
 ```
