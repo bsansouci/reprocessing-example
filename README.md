@@ -1,12 +1,14 @@
-Reprocessing example project
+Flappybird
 ---
 
-<p align="center"> 
+This project is made using [Reprocessing](https://github.com/schmavery/reprocessing).
+
+This project builds using the build system [bsb-native](https://github.com/bsansouci/bsb-native) which allows the project to be built to **JS** as well as built to **bytecode** and **native assembly**.
+
+<p align="left"> 
 <img src="https://user-images.githubusercontent.com/4534692/34076455-e047b276-e29c-11e7-9f14-33f79b0d4612.gif" />
 </p>
 
-
-This is a starter example project. Just clone to get started!
 
 ## How to
 ```
