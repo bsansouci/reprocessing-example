@@ -1,11 +1,11 @@
 Reprocessing example project - 2048 Game
 ---
+This was written in about 5 hours as part of a livestream viewable here: https://www.youtube.com/watch?v=UDOEd5jS0Ac
 
 <p align="center"> 
 <img src="https://user-images.githubusercontent.com/4534692/32880874-172ea62e-ca64-11e7-9c12-c86df0019049.gif" />
 </p>
 
-This is a starter example project. Just clone to get started!
 
 This was written as part of a livestream viewable here: https://www.youtube.com/watch?v=UDOEd5jS0Ac
 
