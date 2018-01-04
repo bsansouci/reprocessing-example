@@ -1,14 +1,14 @@
-Flappybird
+Reprocessing Example
 ---
 
-This project is made using [Reprocessing](https://github.com/schmavery/reprocessing).
+Clone this repo to get started with [Reprocessing](https://github.com/schmavery/reprocessing).
 
-This project builds using the build system [bsb-native](https://github.com/bsansouci/bsb-native) which allows the project to be built to **JS** as well as built to **bytecode** and **native assembly**.
+Demos are on other branches:
 
-<p align="center"> 
-<img src="https://user-images.githubusercontent.com/4534692/34076455-e047b276-e29c-11e7-9f14-33f79b0d4612.gif" />
-</p>
+- [Flappy Bird](https://github.com/bsansouci/reprocessing-example/tree/livestream-flappybird)
+- [2048](https://github.com/bsansouci/reprocessing-example/tree/2048)
 
+...and more on the [Reprocessing repo](https://github.com/schmavery/reprocessing#projects-using-reprocessing).
 
 ## How to
 ```
@@ -16,7 +16,7 @@ git clone https://github.com/bsansouci/reprocessing-example.git
 ```
 
 ### Install
-_warning_: this doesn't work with npm5 yet. Use npm4 or use yarn. To downgrade to npm4 you can `npm install -g npm@latest-4`
+
 ```
 npm install
 ```
