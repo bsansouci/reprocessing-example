@@ -5,6 +5,10 @@ This is a starter example project. Just clone to get started!
 
 This was written in 3 hours as part of a livestream which can be viewed here: https://www.youtube.com/watch?v=5aD3aPvNpyQ
 
+<p align="center"> 
+<img src="https://user-images.githubusercontent.com/4534692/34076455-e047b276-e29c-11e7-9f14-33f79b0d4612.gif" />
+</p>
+
 ## How to
 ```
 git clone https://github.com/bsansouci/reprocessing-example.git
