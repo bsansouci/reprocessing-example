@@ -1,7 +1,7 @@
 {
   "name": "reprocessing-example",
   "sources": "src",
-  "bs-dependencies": ["reprocessing"],
+  "bs-dependencies": ["Reprocessing"],
   "entries": [{
     "backend": "bytecode",
     "main-module": "IndexHot"
