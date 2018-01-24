@@ -1,6 +1,6 @@
 open Reprocessing;
 
-let jumpForce = (-11.);
+let jumpForce = (-500.);
 
 let speed = 175.;
 
@@ -10,7 +10,7 @@ let halfGap = 70.;
 
 let birdSize = 20.;
 
-let gravity = 40.;
+let gravity = 1400.;
 
 let birdX = 50.;
 
