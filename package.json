@@ -14,6 +14,7 @@
     "reprocessing": "schmavery/reprocessing"
   },
   "devDependencies": {
-    "bs-platform": "bsansouci/bsb-native#2.1.1"
+    "bs-platform": "bsansouci/bsb-native#2.1.1",
+    "font-generator": "bsansouci/font-generator"
   }
 }
