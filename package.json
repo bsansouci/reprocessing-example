@@ -6,9 +6,11 @@
     "build": "bsb -make-world",
     "build:web": "bsb -make-world -backend js",
     "build:native": "bsb -make-world -backend native",
-    "clean": "bsb -clean-world"
+    "clean": "bsb -clean-world",
+    "gen-font": "gen-font assets/clear-sans.bold.ttf 35 assets/font && gen-font assets/clear-sans.bold.ttf 16 assets/fontSmall"
   },
   "dependencies": {
+    "FontGenerator": "bsansouci/font-generator",
     "reprocessing": "schmavery/reprocessing"
   },
   "devDependencies": {
