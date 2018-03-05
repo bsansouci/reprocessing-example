@@ -1,6 +1,6 @@
 open Reprocessing;
 
-let jumpForce = (-500.);
+let jumpForce = (-350.);
 
 let speed = 175.;
 
@@ -10,7 +10,7 @@ let halfGap = 70.;
 
 let birdSize = 20.;
 
-let gravity = 1400.;
+let gravity = 800.;
 
 let birdX = 50.;
 
@@ -36,7 +36,7 @@ type stateT = {
   score: int
 };
 
-let setup = (env) => {
+let setup = env => {
   Env.size(~width=400, ~height=640, env);
   {
     birdY: defaultBirdY,
@@ -47,10 +47,10 @@ let setup = (env) => {
     image: Draw.loadImage(~filename="assets/flappy.png", ~isPixel=true, env),
     font: Draw.loadFont(~filename="assets/flappy.fnt", ~isPixel=true, env),
     score: 0
-  }
+  };
 };
 
-let generatePipe = (x) => (
+let generatePipe = x => (
   x +. Utils.randomf(~min=200., ~max=300.),
   Utils.randomf(~min=50. +. halfGap, ~max=floorY -. 50. -. halfGap)
 );
@@ -60,9 +60,9 @@ let generateNewPipes = ({pipes, xOffset}) =>
     ((x, _) as pipe) =>
       if (x -. xOffset +. pipeWidth <= 0.) {
         let newX = List.fold_left((maxX, (x, _)) => max(maxX, x), 0., pipes);
-        generatePipe(newX)
+        generatePipe(newX);
       } else {
-        pipe
+        pipe;
       },
     pipes
   );
@@ -71,7 +71,16 @@ let drawBird = (state, env) => {
   Draw.pushMatrix(env);
   Draw.translate(~x=birdX, ~y=state.birdY -. 2., env);
   let low1 = (-200.);
-  Draw.rotate(Utils.remapf(~value=state.birdVY, ~low1, ~high1=1200., ~low2=(-1.), ~high2=1.), env);
+  Draw.rotate(
+    Utils.remapf(
+      ~value=state.birdVY,
+      ~low1,
+      ~high1=800.,
+      ~low2=-1.,
+      ~high2=1.
+    ),
+    env
+  );
   Draw.translate(~x=birdSize *. (-1.), ~y=birdSize *. (-1.), env);
   switch (int_of_float(state.xOffset /. 20.) mod 3) {
   | 0 =>
@@ -109,7 +118,7 @@ let drawBird = (state, env) => {
     )
   | _ => assert false
   };
-  Draw.popMatrix(env)
+  Draw.popMatrix(env);
 };
 
 let drawPipes = ({xOffset, pipes, image}, env) =>
@@ -135,12 +144,13 @@ let drawPipes = ({xOffset, pipes, image}, env) =>
         ~texWidth=26,
         ~texHeight=160,
         env
-      )
+      );
     },
     pipes
   );
 
-let drawTiledThing = ({image}, ~texPos, ~texWidth, ~texHeight, ~xOffset, ~y, ~height, env) => {
+let drawTiledThing =
+    ({image}, ~texPos, ~texWidth, ~texHeight, ~xOffset, ~y, ~height, env) => {
   let width = Env.width(env);
   Draw.subImage(
     image,
@@ -161,10 +171,14 @@ let drawTiledThing = ({image}, ~texPos, ~texWidth, ~texHeight, ~xOffset, ~y, ~he
     ~texWidth,
     ~texHeight,
     env
-  )
+  );
 };
 
-let draw = ({font, score, image, birdY, birdVY, pipes, xOffset, running} as state, env) => {
+let draw =
+    (
+      {font, score, image, birdY, birdVY, pipes, xOffset, running} as state,
+      env
+    ) => {
   drawTiledThing(
     state,
     ~texPos=(146, 0),
@@ -202,7 +216,7 @@ let draw = ({font, score, image, birdY, birdVY, pipes, xOffset, running} as stat
       ~texWidth=97,
       ~texHeight=21,
       env
-    )
+    );
   };
   let collided =
     List.exists(
@@ -230,13 +244,17 @@ let draw = ({font, score, image, birdY, birdVY, pipes, xOffset, running} as stat
   | Running => {
       ...state,
       pipes,
-      birdY: max(min(birdY +. birdVY *. deltaTime, floorY -. birdSize), birdSize),
-      birdVY: Env.keyPressed(Space, env) || collided ? jumpForce : birdVY +. gravity *. deltaTime,
+      birdY:
+        max(min(birdY +. birdVY *. deltaTime, floorY -. birdSize), birdSize),
+      birdVY:
+        Env.keyPressed(Space, env) || collided ?
+          jumpForce : birdVY +. gravity *. deltaTime,
       xOffset: xOffset +. speed *. deltaTime,
       running: collided || hitFloor ? Dead : Running,
       score:
         List.exists(
-          ((x, _)) => birdX +. xOffset <= x && birdX +. xOffset +. speed *. deltaTime > x,
+          ((x, _)) =>
+            birdX +. xOffset <= x && birdX +. xOffset +. speed *. deltaTime > x,
           pipes
         ) ?
           score + 1 : score
@@ -244,7 +262,8 @@ let draw = ({font, score, image, birdY, birdVY, pipes, xOffset, running} as stat
   | Dead => {
       ...state,
       pipes,
-      birdY: max(min(birdY +. birdVY *. deltaTime, floorY -. birdSize), birdSize),
+      birdY:
+        max(min(birdY +. birdVY *. deltaTime, floorY -. birdSize), birdSize),
       birdVY: birdVY +. gravity *. deltaTime,
       running: hitFloor ? Restart : Dead
     }
@@ -252,17 +271,22 @@ let draw = ({font, score, image, birdY, birdVY, pipes, xOffset, running} as stat
     if (Env.keyPressed(Space, env)) {
       {
         ...state,
-        pipes: [generatePipe(200.), generatePipe(400.), generatePipe(600.), generatePipe(800.)],
+        pipes: [
+          generatePipe(200.),
+          generatePipe(400.),
+          generatePipe(600.),
+          generatePipe(800.)
+        ],
         birdY: defaultBirdY,
         birdVY: 0.,
         xOffset: 0.,
         running: Running,
         score: 0
-      }
+      };
     } else {
-      state
+      state;
     }
-  }
+  };
 };
 
 run(~setup, ~draw, ());
