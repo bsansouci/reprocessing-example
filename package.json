@@ -10,7 +10,6 @@
     "gen-font": "gen-font assets/clear-sans.bold.ttf 35 assets/font && gen-font assets/clear-sans.bold.ttf 16 assets/fontSmall"
   },
   "dependencies": {
-    "FontGenerator": "bsansouci/font-generator",
     "reprocessing": "schmavery/reprocessing"
   },
   "devDependencies": {
