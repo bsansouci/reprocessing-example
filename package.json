@@ -10,7 +10,7 @@
     "gen-font": "gen-font assets/clear-sans.bold.ttf 35 assets/font && gen-font assets/clear-sans.bold.ttf 16 assets/fontSmall"
   },
   "dependencies": {
-    "reprocessing": "schmavery/reprocessing"
+    "Reprocessing": "schmavery/reprocessing"
   },
   "devDependencies": {
     "bs-platform": "bsansouci/bsb-native#2.1.1",
