@@ -1,7 +1,7 @@
 {
   "name": "reprocessing-example",
   "scripts": {
-    "start": "./lib/bs/bytecode/index.byte",
+    "start": "./lib/bs/bytecode/indexhot.byte",
     "start:native": "./lib/bs/native/index.native",
     "build": "bsb -make-world",
     "build:web": "bsb -make-world -backend js",
@@ -9,7 +9,7 @@
     "clean": "bsb -clean-world"
   },
   "dependencies": {
-    "reprocessing": "schmavery/reprocessing"
+    "Reprocessing": "schmavery/reprocessing"
   },
   "devDependencies": {
     "bs-platform": "bsansouci/bsb-native#2.1.1"
