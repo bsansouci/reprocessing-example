@@ -15,7 +15,6 @@ git clone https://github.com/bsansouci/reprocessing-example.git
 git checkout livestream-flappybird
 ```
 ### Install
-_warning_: this doesn't work with npm5 yet. Use npm4 or use yarn. To downgrade to npm4 you can `npm install -g npm@latest-4`
 ```
 npm install
 ```
