@@ -9,7 +9,7 @@
     "clean": "bsb -clean-world"
   },
   "dependencies": {
-    "Reprocessing": "schmavery/reprocessing"
+    "reprocessing": "0.1.0"
   },
   "devDependencies": {
     "bs-platform": "bsansouci/bsb-native#2.1.1"
