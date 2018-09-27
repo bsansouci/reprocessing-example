@@ -9,9 +9,9 @@
     "clean": "bsb -clean-world"
   },
   "dependencies": {
-    "reprocessing": "0.1.0"
+    "reprocessing": "0.2.0"
   },
   "devDependencies": {
-    "bs-platform": "bsansouci/bsb-native#2.1.1"
+    "bs-platform": "bsansouci/bsb-native#3.2.0"
   }
 }
