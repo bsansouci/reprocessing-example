@@ -43,46 +43,6 @@ function pathNormalize(path) {
   return (isAbsolute ? '/' : '') + path;
 };
 
-let current_dir_name = ".";
-function is_relative(n) {
-  if (n.length < 1) {
-    return /* true */1;
-  } else {
-    return +(n[0] !== "/");
-  }
-}
-var dir_sep = "/";
-
-function is_dir_sep(s, i) {
-  return +(s[i] === "/");
-}
-function concat(dirname, filename) {
-  var l = dirname.length;
-  if (l === 0 || is_dir_sep(dirname, l - 1 | 0)) {
-    return dirname + filename;
-  } else {
-    return dirname + (dir_sep + filename);
-  }
-}
-
-function custom_combine(path1, path2) {
-  if (is_relative(path2)) {
-    if (path2.length) {
-      if (path1 === current_dir_name) {
-        return path2;
-      } else if (path2 === current_dir_name) {
-        return path1;
-      } else {
-        return concat(path1, path2);
-      }
-    } else {
-      return path1;
-    }
-  } else {
-    return path2;
-  }
-}
-
 var globalEval = eval;
 var currentScript = document.currentScript;
 var projectRoot = currentScript.dataset['project-root'] || currentScript.dataset['projectRoot'];
@@ -101,9 +61,29 @@ var ensureEndsWithJs = function(path) {
     return path + '.js';
   }
 };
+
+let dir_sep = "/";
+function concat(dirname, filename) {
+  if (filename[0] === dir_sep) {
+    return filename;
+  }
+  
+  var l = dirname.length;
+  if (l === 0 || dirname[l - 1 | 0] === dir_sep) {
+    return dirname + filename;
+  } else {
+    return dirname + (dir_sep + filename);
+  }
+}
+
 function loadScript(scriptPath) {
   var request = new XMLHttpRequest();
-
+  var splitp = scriptPath.split(dir_sep);
+  for (let i = 0; i < splitp.length; i++) {
+    if (splitp[i] === "node_modules") {
+      scriptPath = splitp.slice(i, splitp.length).join(dir_sep);
+    }
+  }
   request.open("GET", scriptPath, false); // sync
   request.send();
   var dirSeparatorIndex = scriptPath.lastIndexOf('/');
@@ -116,10 +96,10 @@ function loadScript(scriptPath) {
     var resolvedPath;
     if (path.startsWith('.')) {
       // require('./foo/bar')
-      resolvedPath = ensureEndsWithJs(custom_combine(__dirname, path));
+      resolvedPath = ensureEndsWithJs(__dirname + path);
     } else if (path.indexOf('/') === -1) {
       // require('react')
-      var packageJson = pathNormalize(custom_combine(nodeModulesDir, custom_combine(path, 'package.json')));
+      var packageJson = pathNormalize(concat(nodeModulesDir, path + '/package.json'));
       if (packageJsonMainCache[packageJson] == null) {
         var jsonRequest = new XMLHttpRequest();
         jsonRequest.open("GET", packageJson, false);
@@ -133,12 +113,12 @@ function loadScript(scriptPath) {
         } else if (!main.endsWith('.js')) {
           main = main + '.js';
         }
-        packageJsonMainCache[packageJson] = custom_combine(nodeModulesDir, custom_combine(path, main));
+        packageJsonMainCache[packageJson] = concat(nodeModulesDir, concat(path, main));
       }
       resolvedPath = packageJsonMainCache[packageJson];
     } else {
       // require('react/bar')
-      resolvedPath = ensureEndsWithJs(custom_combine(nodeModulesDir, path));
+      resolvedPath = ensureEndsWithJs(concat(nodeModulesDir, path));
     };
     resolvedPath = pathNormalize(resolvedPath);
     if (modulesCache[resolvedPath] != null) {
