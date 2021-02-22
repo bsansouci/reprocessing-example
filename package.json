@@ -10,9 +10,9 @@
     "gen-font": "gen-font assets/clear-sans.bold.ttf 35 assets/font && gen-font assets/clear-sans.bold.ttf 16 assets/fontSmall"
   },
   "dependencies": {
-    "reprocessing": "0.2.0"
+    "reprocessing": "^0.3.2"
   },
   "devDependencies": {
-    "bsb-native": "4.0.6"
+    "bsb-native": "^4.0.1100"
   }
 }
